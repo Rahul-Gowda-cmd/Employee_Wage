@@ -16,17 +16,26 @@ namespace EmployeeWage
             int dailyWage = 0;
             int PartTimeHours = 4;
             Random rm = new Random();
-            int present = rm.Next(0, 3);
+            int workStatus = rm.Next(0, 3);
 
-            if (present == 1)
+            switch(workStatus)
             {
-                Console.WriteLine("Employee is present");
-                dailyWage = perHourWage * HoursWorked;
-            }
-            else if (present == 2)
-            {
-                Console.WriteLine("Employee is absent");
-                dailyWage = perHourWage * PartTimeHours;
+                case 0:
+                    Console.WriteLine("Employee is absent");
+                    break;
+                case 1:
+                    Console.WriteLine("Employee is present");
+                    dailyWage = perHourWage * HoursWorked;
+           
+                    break;
+                case 2:
+                    Console.WriteLine("Employee has worked partTime");
+                    dailyWage = perHourWage * PartTimeHours;
+              
+                    break;
+                default:
+                    Console.WriteLine("Something Wrong Appeared");
+                    break;
             }
             Console.WriteLine("Daily Wage of Employee:" + dailyWage);
         }

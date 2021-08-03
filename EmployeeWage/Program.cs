@@ -15,9 +15,11 @@ namespace EmployeeWage
             int HoursWorked = 8;
             int dailyWage;
             int PartTimeHours = 4;
+            int noofHoursWorked = 0;
+            int daysWorked = 0;
             int monthlyWage = 0;
             Random rm = new Random();
-            for (int i = 0; i < 20; i++)
+            while (noofHoursWorked <= 100 && daysWorked <=20)
             {
                 dailyWage = 0;
                 int workStatus = rm.Next(0, 3);
@@ -30,12 +32,14 @@ namespace EmployeeWage
                     case 1:
                         Console.WriteLine("Employee is present");
                         dailyWage = perHourWage * HoursWorked;
-
+                        noofHoursWorked += HoursWorked;
+                        daysWorked++;
                         break;
                     case 2:
                         Console.WriteLine("Employee has worked partTime");
                         dailyWage = perHourWage * PartTimeHours;
-
+                        noofHoursWorked += PartTimeHours;
+                        daysWorked++;
                         break;
                     default:
                         Console.WriteLine("Something Wrong Appeared");
@@ -44,6 +48,7 @@ namespace EmployeeWage
                 Console.WriteLine("Daily Wage of Employee:" + dailyWage);
                 monthlyWage += dailyWage;
             }
+            Console.WriteLine("Days Worked"+daysWorked);
             Console.WriteLine("MonthlyWage" + monthlyWage);
         }
     }
